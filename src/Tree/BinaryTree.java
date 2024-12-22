@@ -92,4 +92,18 @@ public class BinaryTree <E extends Comparable<E>> {
     }
     return 1 + Math.max(height(node.getLeft()), height(node.getRight()));
   }
+
+  public boolean isEqual(Node<E> a, Node<E> b){
+
+    if(a == null || b == null) { //둘 중 하나라도 null 이라면
+      return a == b; // 둘 다 null 이면 같음, 아니면 false
+    }
+
+    if(a.getData().compareTo(b.getData()) != 0 ) {
+      return false;
+    }
+
+    return (isEqual(a.getLeft(), b.getLeft()) && isEqual(a.getRight(), b.getRight()));
+
+  }
 }
